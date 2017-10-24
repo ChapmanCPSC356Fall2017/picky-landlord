@@ -1,5 +1,7 @@
 package edu.chapman.cpsc356.pickylandlord.models;
 
+import org.joda.time.DateTime;
+
 import java.util.UUID;
 
 public class CrimeModel
@@ -7,10 +9,12 @@ public class CrimeModel
     private String id;
     private String title;
     private boolean solved;
+    private DateTime created;
 
     public CrimeModel()
     {
         this.id = UUID.randomUUID().toString();
+        this.created = DateTime.now();
     }
 
     public String getId()
@@ -36,5 +40,10 @@ public class CrimeModel
     public void setSolved(boolean solved)
     {
         this.solved = solved;
+    }
+
+    public DateTime getCreatedDate()
+    {
+        return created;
     }
 }

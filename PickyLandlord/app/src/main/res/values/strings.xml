@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">PIcky Landlord</string>
-    <string name="crime_title">Crime Title</string>
+    <string name="app_name">Picky Landlord</string>
+    <string name="crime_title_hint">Enter crime title here</string>
     <string name="solved">Solved</string>
+    <string name="title">Title</string>
 </resources>

@@ -9,12 +9,12 @@ public class CrimeModel
     private String id;
     private String title;
     private boolean solved;
-    private DateTime created;
+    private DateTime date;
 
     public CrimeModel()
     {
         this.id = UUID.randomUUID().toString();
-        this.created = DateTime.now();
+        this.date = DateTime.now();
     }
 
     public String getId()
@@ -42,8 +42,8 @@ public class CrimeModel
         this.solved = solved;
     }
 
-    public DateTime getCreatedDate()
+    public DateTime getDate()
     {
-        return created;
+        return date;
     }
 }

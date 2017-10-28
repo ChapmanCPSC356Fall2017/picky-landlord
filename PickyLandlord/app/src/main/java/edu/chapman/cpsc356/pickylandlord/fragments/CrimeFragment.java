@@ -79,7 +79,7 @@ public class CrimeFragment extends Fragment
         });
 
         Button dateButton = v.findViewById(R.id.btn_created_date);
-        dateButton.setText(this.crime.getCreatedDate().toString(DateTimeFormat.longDateTime()));
+        dateButton.setText(this.crime.getDate().toString(DateTimeFormat.longDateTime()));
 
         return v;
     }

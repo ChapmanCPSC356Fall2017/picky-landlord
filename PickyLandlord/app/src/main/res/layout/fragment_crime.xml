@@ -5,12 +5,18 @@
               android:orientation="vertical"
               android:padding="15dp">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        style="?android:listSeparatorTextViewStyle"/>
+
     <EditText
         android:id="@+id/et_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:hint="@string/crime_title"/>
+        android:hint="@string/crime_title_hint"/>
 
     <CheckBox
         android:id="@+id/cb_solved"
@@ -23,7 +29,8 @@
 
     <Button
         android:id="@+id/btn_created_date"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:clickable="false"

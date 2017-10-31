@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="edu.chapman.cpsc356.pickylandlord.activities.MainActivity">
+    tools:context="edu.chapman.cpsc356.pickylandlord.activities.SingleFragmentActivity">
 
     <FrameLayout
         android:id="@+id/fl_fragment_container"
@@ -14,13 +14,5 @@
         android:layout_height="match_parent">
 
     </FrameLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="10dp"
-        android:src="@android:drawable/ic_menu_add"
-        />
 
 </FrameLayout>

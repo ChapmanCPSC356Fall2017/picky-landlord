@@ -3,6 +3,7 @@ package edu.chapman.cpsc356.pickylandlord.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,20 +22,11 @@ public class CrimeListFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
-        ViewGroup vg = (ViewGroup) inflater.inflate(R.layout.fragment_crime_list, container, false);
+        View v = inflater.inflate(R.layout.fragment_crime_list, container, false);
 
-        List<CrimeModel> crimes = CrimeCollection.GetInstance().getCrimes();
+        RecyclerView crimesListView = v.findViewById(R.id.rv_crimes);
+        // crimesListView.setAdapter();
 
-        for (CrimeModel crime : crimes)
-        {
-            TextView tv = new TextView(getActivity());
-            tv.setText(crime.getTitle());
-            tv.setPadding(10,10,10,10);
-            tv.setTextSize(25);
-
-            vg.addView(tv);
-        }
-
-        return vg;
+        return v;
     }
 }

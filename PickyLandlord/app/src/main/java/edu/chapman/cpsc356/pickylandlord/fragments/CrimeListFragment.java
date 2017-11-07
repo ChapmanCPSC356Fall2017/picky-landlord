@@ -12,10 +12,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import edu.chapman.cpsc356.pickylandlord.CrimeCollection;
 import edu.chapman.cpsc356.pickylandlord.R;
 import edu.chapman.cpsc356.pickylandlord.adapters.CrimeListAdapter;
-import edu.chapman.cpsc356.pickylandlord.models.CrimeModel;
 
 
 public class CrimeListFragment extends Fragment

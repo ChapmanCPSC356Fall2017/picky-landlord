@@ -6,9 +6,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import edu.chapman.cpsc356.pickylandlord.CrimeCollection;
+import edu.chapman.cpsc356.pickylandlord.R;
 import edu.chapman.cpsc356.pickylandlord.models.CrimeModel;
 
 
@@ -22,7 +24,7 @@ public class CrimeListAdapter extends RecyclerView.Adapter<CrimeListAdapter.Crim
         Log.d(LOGTAG, "onCreateViewHolder()");
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View v = inflater.inflate(android.R.layout.simple_list_item_1, parent, false); // TODO: replace w/ custom
+        View v = inflater.inflate(R.layout.cell_crime, parent, false);
 
         return new CrimeViewHolder(v);
     }
@@ -48,17 +50,20 @@ public class CrimeListAdapter extends RecyclerView.Adapter<CrimeListAdapter.Crim
     class CrimeViewHolder extends RecyclerView.ViewHolder
     {
         private TextView titleTextView;
+        private CheckBox solvedCheckbox;
 
         public CrimeViewHolder(View itemView)
         {
             super(itemView);
 
-            this.titleTextView = (TextView) itemView;
+            this.titleTextView = itemView.findViewById(R.id.tv_title);
+            this.solvedCheckbox = itemView.findViewById(R.id.cb_solved);
         }
 
         public void setup(CrimeModel crime)
         {
             this.titleTextView.setText(crime.getTitle());
+            this.solvedCheckbox.setChecked(crime.isSolved());
         }
     }
 }

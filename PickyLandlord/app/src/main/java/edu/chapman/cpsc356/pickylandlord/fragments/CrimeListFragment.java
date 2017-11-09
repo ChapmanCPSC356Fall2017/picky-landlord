@@ -18,6 +18,8 @@ import edu.chapman.cpsc356.pickylandlord.adapters.CrimeListAdapter;
 
 public class CrimeListFragment extends Fragment
 {
+    private CrimeListAdapter adapter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
@@ -25,11 +27,21 @@ public class CrimeListFragment extends Fragment
         View v = inflater.inflate(R.layout.fragment_crime_list, container, false);
 
         RecyclerView crimesListView = v.findViewById(R.id.rv_crimes);
-        crimesListView.setAdapter(new CrimeListAdapter());
+
+        this.adapter = new CrimeListAdapter();
+        crimesListView.setAdapter(adapter);
 
         // This is lame - don't study this, just do it
         crimesListView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return v;
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        this.adapter.notifyDataSetChanged();
     }
 }

@@ -16,7 +16,9 @@ import android.widget.EditText;
 
 import org.joda.time.format.DateTimeFormat;
 
+import edu.chapman.cpsc356.pickylandlord.CrimeCollection;
 import edu.chapman.cpsc356.pickylandlord.R;
+import edu.chapman.cpsc356.pickylandlord.activities.CrimeActivity;
 import edu.chapman.cpsc356.pickylandlord.models.CrimeModel;
 
 
@@ -34,7 +36,8 @@ public class CrimeFragment extends Fragment
     {
         super.onCreate(savedInstanceState);
 
-        this.crime = new CrimeModel(); // TODO: temporary
+        String crimeId = getArguments().getString(CrimeActivity.EXTRA_CRIME_ID);
+        this.crime = CrimeCollection.GetInstance().getCrime(crimeId);
     }
 
     @Nullable
@@ -44,7 +47,10 @@ public class CrimeFragment extends Fragment
         View v = inflater.inflate(R.layout.fragment_crime, container, false);
 
         this.titleEditText = v.findViewById(R.id.et_title);
+        this.titleEditText.setText(this.crime.getTitle());
+
         this.solvedCheckbox = v.findViewById(R.id.cb_solved);
+        this.solvedCheckbox.setChecked(this.crime.isSolved());
 
         this.titleEditText.addTextChangedListener(new TextWatcher()
         {

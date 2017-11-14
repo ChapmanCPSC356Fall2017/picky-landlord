@@ -45,11 +45,6 @@ public class CrimeCollection
         return this.crimes;
     }
 
-    public void addCrime(CrimeModel crime)
-    {
-        this.crimes.add(crime);
-    }
-
     public CrimeModel getCrime(String id)
     {
         for(CrimeModel crime : this.crimes)

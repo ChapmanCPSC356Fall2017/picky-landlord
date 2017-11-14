@@ -44,4 +44,9 @@ public class CrimeListFragment extends Fragment
 
         this.adapter.notifyDataSetChanged();
     }
+
+    public void notifyDataChanged()
+    {
+        this.adapter.notifyDataSetChanged();
+    }
 }

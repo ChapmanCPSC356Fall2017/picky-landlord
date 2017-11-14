@@ -78,9 +78,7 @@ public class CrimeListAdapter extends RecyclerView.Adapter<CrimeListAdapter.Crim
         @Override
         public void onClick(View view)
         {
-            Intent crimeIntent = new Intent(view.getContext(), CrimeActivity.class);
-            crimeIntent.putExtra(CrimeActivity.EXTRA_CRIME_ID, this.crime.getId());
-
+            Intent crimeIntent = CrimeActivity.BuildIntent(this.crime, view.getContext());
             view.getContext().startActivity(crimeIntent);
         }
     }

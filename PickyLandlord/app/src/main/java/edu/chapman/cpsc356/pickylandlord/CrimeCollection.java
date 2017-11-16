@@ -57,4 +57,17 @@ public class CrimeCollection
 
         return null;
     }
+
+    public int indexOf(String id)
+    {
+        for (int i = 0; i < this.crimes.size(); i++)
+        {
+            if (this.crimes.get(i).getId().equals(id))
+            {
+                return i;
+            }
+        }
+
+        return 0;
+    }
 }

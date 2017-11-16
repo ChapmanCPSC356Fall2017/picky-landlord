@@ -14,6 +14,7 @@ import android.widget.Toast;
 import edu.chapman.cpsc356.pickylandlord.CrimeCollection;
 import edu.chapman.cpsc356.pickylandlord.R;
 import edu.chapman.cpsc356.pickylandlord.activities.CrimeActivity;
+import edu.chapman.cpsc356.pickylandlord.activities.CrimePagerActivity;
 import edu.chapman.cpsc356.pickylandlord.models.CrimeModel;
 
 
@@ -78,7 +79,9 @@ public class CrimeListAdapter extends RecyclerView.Adapter<CrimeListAdapter.Crim
         @Override
         public void onClick(View view)
         {
-            Intent crimeIntent = CrimeActivity.BuildIntent(this.crime, view.getContext());
+            Intent crimeIntent = new Intent(view.getContext(), CrimePagerActivity.class);
+            crimeIntent.putExtra(CrimePagerActivity.EXTRA_CRIME_ID, this.crime.getId());
+
             view.getContext().startActivity(crimeIntent);
         }
     }

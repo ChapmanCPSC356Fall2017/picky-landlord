@@ -25,6 +25,7 @@ import edu.chapman.cpsc356.pickylandlord.models.CrimeModel;
 public class CrimeFragment extends Fragment
 {
     private final String LOGTAG = "CrimeFragment";
+    public final static String ARG_CRIME_ID = "crime_id";
 
     private EditText titleEditText;
     private CheckBox solvedCheckbox;
@@ -36,7 +37,7 @@ public class CrimeFragment extends Fragment
     {
         super.onCreate(savedInstanceState);
 
-        String crimeId = getArguments().getString(CrimeActivity.EXTRA_CRIME_ID);
+        String crimeId = getArguments().getString(CrimeFragment.ARG_CRIME_ID);
         this.crime = CrimeCollection.GetInstance().getCrime(crimeId);
     }
 

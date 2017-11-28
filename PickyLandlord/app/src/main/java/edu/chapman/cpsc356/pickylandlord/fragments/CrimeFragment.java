@@ -1,5 +1,6 @@
 package edu.chapman.cpsc356.pickylandlord.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,6 +8,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -29,6 +33,7 @@ public class CrimeFragment extends Fragment
 
     private EditText titleEditText;
     private CheckBox solvedCheckbox;
+    private Button dateButton;
 
     private CrimeModel crime;
 
@@ -39,6 +44,8 @@ public class CrimeFragment extends Fragment
 
         String crimeId = getArguments().getString(CrimeFragment.ARG_CRIME_ID);
         this.crime = CrimeCollection.GetInstance().getCrime(crimeId);
+
+        setHasOptionsMenu(true);
     }
 
     @Nullable
@@ -85,9 +92,41 @@ public class CrimeFragment extends Fragment
             }
         });
 
-        Button dateButton = v.findViewById(R.id.btn_created_date);
-        dateButton.setText(this.crime.getDate().toString(DateTimeFormat.longDateTime()));
+        this.dateButton = v.findViewById(R.id.btn_created_date);
+        dateButton.setText(this.crime.getDate().toString(DateTimeFormat.longDate()));
 
         return v;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+    {
+        super.onCreateOptionsMenu(menu, inflater);
+
+        inflater.inflate(R.menu.fragment_crime, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.menu_delete_crime:
+
+                // TODO: maybe show a confirmation
+
+                CrimeCollection.GetInstance().getCrimes().remove(this.crime);
+
+                Activity act = getActivity();
+
+                if (act != null)
+                {
+                    act.finish();
+                }
+
+                return true;
+            default:
+                return false;
+        }
     }
 }

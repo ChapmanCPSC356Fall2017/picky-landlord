@@ -46,4 +46,9 @@ public class CrimeModel
     {
         return date;
     }
+
+    public void setDate(DateTime date)
+    {
+        this.date = date;
+    }
 }

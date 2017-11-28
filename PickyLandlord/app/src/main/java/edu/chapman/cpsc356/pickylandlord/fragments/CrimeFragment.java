@@ -1,6 +1,7 @@
 package edu.chapman.cpsc356.pickylandlord.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
+import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
 import edu.chapman.cpsc356.pickylandlord.CrimeCollection;
@@ -95,6 +97,18 @@ public class CrimeFragment extends Fragment
         this.dateButton = v.findViewById(R.id.btn_created_date);
         dateButton.setText(this.crime.getDate().toString(DateTimeFormat.longDate()));
 
+        this.dateButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                DateDialogFragment frag = DateDialogFragment.GetInstance(crime.getDate());
+                frag.setTargetFragment(CrimeFragment.this, DateDialogFragment.REQUEST_CODE);
+
+                frag.show(getFragmentManager(), null);
+            }
+        });
+
         return v;
     }
 
@@ -127,6 +141,21 @@ public class CrimeFragment extends Fragment
                 return true;
             default:
                 return false;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == DateDialogFragment.REQUEST_CODE && resultCode == Activity.RESULT_OK)
+        {
+            // Get date extra from data
+            DateTime date = (DateTime) data.getSerializableExtra(DateDialogFragment.EXTRA_DATE);
+            this.crime.setDate(date);
+
+            this.dateButton.setText(date.toString(DateTimeFormat.longDate()));
         }
     }
 }

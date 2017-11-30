@@ -2,7 +2,9 @@ package edu.chapman.cpsc356.pickylandlord.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -24,7 +26,9 @@ import org.joda.time.format.DateTimeFormat;
 
 import edu.chapman.cpsc356.pickylandlord.CrimeCollection;
 import edu.chapman.cpsc356.pickylandlord.R;
+import edu.chapman.cpsc356.pickylandlord.SharedPrefHelper;
 import edu.chapman.cpsc356.pickylandlord.activities.CrimeActivity;
+import edu.chapman.cpsc356.pickylandlord.activities.SettingsActivity;
 import edu.chapman.cpsc356.pickylandlord.models.CrimeModel;
 
 
@@ -125,6 +129,20 @@ public class CrimeFragment extends Fragment
     {
         switch (item.getItemId())
         {
+            case R.id.menu_share_crime:
+
+                String defaultShareText = SharedPrefHelper.GetDefaultShareText(getContext());
+
+                String shareMessage = defaultShareText + "\n" + this.crime.getTitle();
+
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+
+                startActivity(shareIntent);
+
+                return true;
             case R.id.menu_delete_crime:
 
                 // TODO: maybe show a confirmation

@@ -58,6 +58,11 @@ public class CrimeListActivity extends SingleFragmentActivity
                 this.fragment.notifyDataChanged();
                 return true;
 
+            case R.id.menu_settings:
+
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
+
             default:
                 return false;
         }

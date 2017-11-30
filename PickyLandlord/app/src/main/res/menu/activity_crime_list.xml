@@ -10,5 +10,8 @@
     <item
         android:id="@+id/menu_solve_all"
         android:title="@string/solve_all"/>
+    <item
+        android:id="@+id/menu_settings"
+        android:title="@string/settings"/>
 
 </menu>
